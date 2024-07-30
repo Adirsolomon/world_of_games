@@ -1,0 +1,8 @@
+services:
+  main_score:
+    build: .
+    container_name: score_cont
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/app
