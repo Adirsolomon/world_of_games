@@ -35,5 +35,8 @@ def main_function():
         os._exit(1)
 
 
+main_function()
+
+
 
 
