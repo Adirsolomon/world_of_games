@@ -10,13 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t score_server .'
-            }
-        }
-
-        stage('Run') {
-            steps {
-                sh 'docker run -d -p 8777:8777 -v $(pwd)/scores.txt:/app/scores.txt score_server'
+                sh 'docker compose up --build'
             }
         }
 
