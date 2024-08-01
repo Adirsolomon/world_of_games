@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY main_score.py utils.py scores.txt requirements.txt
 
-RUN python -m pip install -r requirements.txt
+RUN python -m pip install flask
 
 EXPOSE 5000
 
