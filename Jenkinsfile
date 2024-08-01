@@ -10,13 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t main_score:2.0 .'
-            }
-        }
-
-         stage('Run') {
-            steps {
-                sh 'docker run -d -p 5000:5000 main_score:2.0'
+                sh 'docker compose up --build .'
             }
         }
 
