@@ -23,10 +23,10 @@ pipeline {
 
     post {
         always {
-            sh 'docker stop $(docker ps -q)'
+            sh 'docker stop score_cont'
         }
         success {
-            sh 'docker push score_server'
+            sh 'docker push main_score-main_score'
         }
     }
 }
