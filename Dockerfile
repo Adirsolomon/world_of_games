@@ -8,4 +8,5 @@ RUN python -m pip install flask selenium
 
 EXPOSE 5000
 
-CMD python main_score.py
+CMD ["python", "main_score.py"]
+
