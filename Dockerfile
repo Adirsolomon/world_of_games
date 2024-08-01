@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY main_score.py utils.py scores.txt requirements.txt
 
-RUN python -m pip install flask
+RUN python -m pip install flask selenium
 
 EXPOSE 5000
 
