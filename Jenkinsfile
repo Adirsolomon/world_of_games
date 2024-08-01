@@ -32,7 +32,10 @@ pipeline {
             sh 'docker stop $(docker ps -q)'
         }
         success {
-            sh 'docker push main_score:2.0'
+            sh 'docker login'
+            sh 'docker build -t adiros/score_pipe .'
+            sh 'docker push adiros/score_pipe'
+
         }
     }
 }
