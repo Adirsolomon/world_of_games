@@ -10,7 +10,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker compose up --build'
+                sh 'docker build -t main_score:2.0 .'
+            }
+        }
+
+         stage('Run') {
+            steps {
+                sh 'docker run -d -p 5000 main_score:2.0 .'
             }
         }
 
@@ -23,10 +29,10 @@ pipeline {
 
     post {
         always {
-            sh 'docker stop score_cont'
+            sh 'docker stop $(docker ps -q)'
         }
         success {
-            sh 'docker push main_score-main_score'
+            sh 'docker push main_score:2.0'
         }
     }
 }
