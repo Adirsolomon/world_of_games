@@ -35,7 +35,7 @@ pipeline {
             sh 'docker login'
             sh 'docker build -t adiros/score_pipe .'
             sh 'docker push adiros/score_pipe'
-            sh 'docker rm $(docker ps -q)'
+            sh 'docker rm CONTAINER $(docker ps -q)'
         }
     }
 }
