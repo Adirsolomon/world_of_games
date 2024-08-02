@@ -16,7 +16,7 @@ pipeline {
 
          stage('Run') {
             steps {
-                sh 'docker run -d -p 5000:5000 main_score:2.0'
+                sh 'docker run --name score_cont -d -p 5000:5000 main_score:2.0'
             }
         }
 
@@ -29,13 +29,13 @@ pipeline {
 
     post {
         always {
-            sh 'docker stop $(docker ps -q)'
+            sh 'docker stop score_cont'
         }
         success {
             sh 'docker login'
             sh 'docker build -t adiros/score_pipe .'
             sh 'docker push adiros/score_pipe'
-            sh 'docker rm CONTAINER $(docker ps -q)'
+            sh 'docker rm score_cont'
         }
     }
 }
