@@ -37,10 +37,10 @@ pipeline {
         success {
                 script {
                     withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-                        sh 'docker build -t adiros/score_pipe .'
-                        sh 'docker push adiros/score_pipe'
-                        sh 'docker rm score_cont'
+                        sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                        sh "docker build -t adiros/score_pipe ."
+                        sh "docker push adiros/score_pipe"
+                        sh "docker rm score_cont"
                     }
                 }
             }
