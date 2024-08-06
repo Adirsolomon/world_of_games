@@ -37,7 +37,7 @@ pipeline {
         success {
                 script {
                     withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
                         sh 'docker build -t adiros/score_pipe .'
                         sh 'docker push adiros/score_pipe'
                         sh 'docker rm score_cont'
